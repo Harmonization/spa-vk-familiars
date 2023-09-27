@@ -1,0 +1,210 @@
+@import variables
+@import animation
+
+body
+    display: grid
+    justify-content: center
+    align-content: space-between
+
+    margin: $margin-body
+    height: calc(100vh - $margin-body * 2)
+    width: calc(100vw - $margin-body * 2 - 20px)
+    background: #f8f0f7
+    font-family: 'Roboto Slab', serif
+
+    .entry-exit
+        display: grid
+        grid-gap: 5px
+
+        .nickname
+            height: $input-height
+            width: 280px
+
+        button.exit
+            background-color: #4860d9
+            border: $border
+            padding: 0.6em 1.2em
+            font-size: 1em
+            font-weight: 500
+            cursor: pointer
+            transition: color 2s
+            color: white
+
+            &:hover
+                border-color: $aqua-color
+                color: $aqua-color
+
+    &::-webkit-scrollbar
+        width: 15px
+        background: #121a43
+
+    &::-webkit-scrollbar-track
+        border: 2px solid #eac8f3
+        box-shadow: inset 0 0 2px 2px rgba(44, 173, 238, 0.5)
+
+    &::-webkit-scrollbar-thumb
+        background: linear-gradient(135deg, #1986db, #b41edabf)
+        border-radius: $border-radius
+
+    .profile
+        display: grid
+        grid-template-rows: calc(100vmin - $margin-body - 1px)
+        grid-template-columns: max-content 1fr
+        
+        border-left: $border
+        border-top: $border
+        border-radius: $border-radius
+        box-shadow: 3px 3px 7px black
+        width: calc(95vw - 20px)
+        height: calc(100% - 10px)
+        min-width: 170px
+        background: linear-gradient(178deg, #f1e6f1 0% 50%, #b2c0d7)
+
+        @media screen and (width < $media-width) 
+            grid-template-columns: 1fr
+            grid-template-rows: 93vmin 620px
+
+        .card
+            display: grid
+            margin: $margin-card
+            max-height: calc(100% - $margin-card * 2)
+            position: relative
+            align-self: center
+            aspect-ratio: 1
+
+            @media screen and (width < $media-width)
+                width: calc(100% - $margin-card * 2)
+            
+            .fullname
+                +caption(3vmin)
+                left: 5px
+                top: -25px
+
+                a
+                    font-weight: 500
+                    color: #fff
+                    text-decoration: inherit
+
+                    &:hover
+                        color: $aqua-color
+                        text-shadow: 3px 3px 7px violet
+                
+                    &:active
+                        text-shadow: 3px 3px 7px $aqua-color
+
+                    &:focus
+                        outline: none
+                        color: $aqua-color
+                        text-shadow: 3px 3px 7px violet
+
+            .city
+                +caption(3vmin)
+                right: 5px
+                top: -25px
+
+            .status
+                +caption(2.6vmin)
+                bottom: -25px
+                left: 0
+                right: 0
+                margin-inline: auto
+
+            .photo
+                display: flex
+                gap: 10px
+                overflow: hidden
+                height: 100%
+                width: 100%
+                aspect-ratio: 1
+                position: relative
+                z-index: 0
+
+                .photo-item
+                    height: calc(100% - 4px)
+
+                    img
+                        height: 100%
+                        flex: 1 0 100%
+                        border: $border
+                        border-radius: 10px
+                        scroll-snap-align: center
+
+        .familiars
+            margin: 10px
+            display: grid
+            color: black
+            overflow: hidden
+            grid-template-rows: max-content 1fr
+            grid-gap: 15px
+
+            .filters
+                display: grid
+                grid-template-columns: repeat(auto-fit, minmax(100px, auto))
+                border-left: $border
+                border-top: $border
+                background: linear-gradient(330deg, #f1e6f1 0% 50%, #60fbff99)
+                border-radius: 10px
+                width: calc(100% - 4px)
+                box-shadow: 2px 2px 5px #000000
+
+                input
+                    height: $input-height
+
+                input, label, select
+                    margin: 5px
+                    &:focus
+                        outline: 2px solid rgba(180, 30, 218, 0.7490196078)
+                
+                input, select
+                    border: $border
+
+            .people-grid
+                display: grid
+                grid-gap: 5px
+                grid-template-columns: repeat(auto-fit, minmax($middle-icon, auto))
+                width: 100%
+
+                .people-item
+                    text-align: center
+                    position: relative
+                    padding-top: 4px
+                    
+                    a
+                        img
+                            border: $border
+                            border-radius: 25px
+                            width: $middle-icon
+
+                            &:hover
+                                outline:  $icon-outline
+                                animation: hoverPerson 1s 1 forwards
+
+                            @keyframes hoverPerson
+                                100%
+                                    border-radius: 80px
+
+                        &:focus
+                            outline: $icon-outline
+                            border-radius: $border-radius
+
+                    // Всплывающие имя и возраст
+                    &:hover::after
+                        content: attr(peoplename)
+                        position: absolute
+                        left: 0
+                        right: 0
+                        bottom: 0
+                        z-index: 1
+                        background: linear-gradient(90deg, #1986db, rgba(180, 30, 218, 0.7490196078))
+                        color: #fff
+                        text-align: center
+                        font-size: 13px
+                        padding: 5px
+                        border: 1px solid #e2660d
+                        border-radius: $border-radius
+                        box-shadow: 3px 3px 3px #db2b519a
+
+                .Знакомые
+                    &:hover::after
+                        background: linear-gradient(90deg, #18d955, rgba(197, 17, 74, 0.749))
+
