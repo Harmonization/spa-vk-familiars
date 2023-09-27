@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { Link, useNavigate, useLoaderData, useLocation, useParams } from 'react-router-dom'
 import { ScrollContainer } from 'react-indiana-drag-scroll';
 import 'react-indiana-drag-scroll/dist/style.css'
-import '../build/style.css'
+import './style.css'
 
 
 const Image = ({ imgMax }) => {
