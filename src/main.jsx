@@ -120,11 +120,11 @@ const getUserFullInfo = async ({params: {id: user_ids}}) => {
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/spa-vk-familiars/',
     element: <Input/>,
   },
   {
-    path: '/:id',
+    path: '/spa-vk-familiars/:id',
     element: <User/>,
     loader: getUserFullInfo
   }

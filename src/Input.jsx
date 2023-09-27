@@ -73,7 +73,7 @@ const Peoples = ({ people, text }) => {
                 const { photo_200, screen_name, fullname, age } = element
                 return (
                     <div className={`people-item ${text}`} peoplename={`${fullname} ${age} (${text})`} key={`${text}${index}`}>
-                        <Link to={`../${screen_name}`}>
+                        <Link to={`../spa-vk-familiars/${screen_name}`}>
                             <img src={photo_200} alt={index} />
                         </Link>
                     </div>
@@ -279,7 +279,7 @@ export const Input = () => {
 
     const inputKeyDown = ({ key }) => {
         if (key === 'Enter') {
-            navigate(`../${userId}`)
+            navigate(`../spa-vk-familiars/${userId}`)
         }
     }
 
