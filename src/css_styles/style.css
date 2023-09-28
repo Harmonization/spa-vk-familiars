@@ -1,8 +1,8 @@
 @charset "UTF-8";
 @keyframes gridAnim {
   0% {
-    width: 600px;
-    grid-template-columns: repeat(1, minmax(600px, auto));
+    width: 50vw;
+    grid-template-columns: repeat(1, minmax(50vw, auto));
   }
   100% {
     width: calc(95vw - 20px);
@@ -95,7 +95,7 @@ body::-webkit-scrollbar-thumb {
 }
 body .profile {
   display: grid;
-  grid-template-rows: calc(100vmin - 20px - 1px);
+  grid-template-rows: calc(100vmin - 40px - 1px);
   grid-template-columns: max-content 1fr;
   border-left: 1px solid black;
   border-top: 1px solid black;

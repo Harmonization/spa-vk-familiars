@@ -14,7 +14,7 @@ const Image = ({ imgMax }) => {
     )
 }
 
-const Photo = ({ innerRef, setAnimation }) => {
+const Photo = ({ innerRef, animation, setAnimation }) => {
 
     const { photos } = useLoaderData()
     const [photo, pushPhoto] = useState(photos)
@@ -36,13 +36,13 @@ const Photo = ({ innerRef, setAnimation }) => {
         return () => {scrollContainer.removeEventListener('scroll', scrollHandler)}
     }, [])
 
-    const scrollHandler = ({target: {scrollLeft, scrollWidth}}) => {
-        const val = Math.abs(scrollWidth - (scrollLeft + window.innerWidth))
-        if (300 < val & val < 600) {
+    const scrollHandler = ({target: {scrollLeft, scrollWidth, offsetHeight, offsetWidth}}) => {        
+        const val = Math.abs(scrollWidth - (scrollLeft + (animation ? offsetHeight : offsetHeight * 2)))
+        if (200 < val & val < 400) {
             setLoading(false)
         }
 
-        else if (val < 200 & !loading) {
+        else if (val < 100 & !loading) {
             setLoading(true)
         }
     }
@@ -137,13 +137,13 @@ const Filters = () => {
         return () => {scrollContainer.removeEventListener('scroll', scrollHandler)}
     }, [])
 
-    const scrollHandler = ({target: {scrollHeight, scrollTop}}) => {
-        const val = scrollHeight - (scrollTop + window.innerHeight)
-        if (300 < val & val < 600) {
+    const scrollHandler = ({target: {scrollHeight, scrollTop, offsetHeight}}) => {
+        const val = scrollHeight - (scrollTop + offsetHeight)
+        if (200 < val & val < 400) {
             setLoading(false)
         }
 
-        else if (val < 200 & !loading) {
+        else if (val < 100 & !loading) {
             setLoading(true)
         }
     }
@@ -216,7 +216,7 @@ export const User = () => {
                         {city && <h2 className="city">{city}</h2>}
                         {status && <h3 className='status'>{status}</h3>}
 
-                        <Photo innerRef={ref} setAnimation={setAnimation}/>
+                        <Photo innerRef={ref} animation={animation} setAnimation={setAnimation}/>
                     </div>
 
                     <Filters />

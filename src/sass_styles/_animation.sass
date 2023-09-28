@@ -1,8 +1,9 @@
 body
     @keyframes gridAnim
         0%
-            width: 600px
-            grid-template-columns: repeat(1, minmax(600px, auto))
+            $start-width: 50vw
+            width: $start-width
+            grid-template-columns: repeat(1, minmax($start-width, auto))
 
         100%
             width: calc(95vw - 20px)
