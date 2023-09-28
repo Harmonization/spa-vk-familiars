@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 
-import {Input, User} from './Input.jsx'
+import { Input } from './Input.jsx'
+import { User } from './User.jsx'
 
 const getAge = bDate => {
   const array = bDate.split('.')

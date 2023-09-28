@@ -9,37 +9,41 @@
     grid-template-columns: repeat(1, minmax(200px, auto));
   }
 }
-body .profile[animation="1"] {
-  animation: gridAnim 2s 1 forwards;
-  grid-template-rows: 1fr minmax(500px, calc(100vmin - 20px - 1px));
-  min-width: 235px;
-}
-body .profile[animation="1"] .card {
-  animation: openPhoto 2s 1 forwards;
-}
-body .profile[animation="1"] .card .photo {
-  overflow: auto hidden;
-}
-body .profile[animation="1"] .card .photo #photo-0 {
-  display: none;
-}
-@keyframes openPhoto {
-  100% {
-    aspect-ratio: 2/1;
+@media screen and (width > 950px) {
+  body .profile[animation="1"] {
+    animation: gridAnim 2s 1 forwards;
+    grid-template-rows: 1fr minmax(500px, calc(100vmin - 20px - 1px));
+    min-width: 235px;
+  }
+  body .profile[animation="1"] .card {
+    animation: openPhoto 2s 1 forwards;
+  }
+  body .profile[animation="1"] .card .photo {
+    overflow: auto hidden;
+  }
+  body .profile[animation="1"] .card .photo #photo-0 {
+    display: none;
+  }
+  @keyframes openPhoto {
+    100% {
+      aspect-ratio: 2/1;
+    }
+  }
+  body .profile[animation="1"] .familiars .people-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
   }
 }
-body .profile[animation="1"] .familiars .people-grid {
-  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-}
-@media screen and (width < 950px) {
+@media screen and (width > 950px) and (width < 950px) {
   body .profile[animation="1"] .familiars .people-grid {
     grid-template-columns: repeat(auto-fit, minmax(100px, auto));
   }
 }
-body .profile[animation="1"] .familiars .people-grid .people-item img {
-  width: 200px;
+@media screen and (width > 950px) {
+  body .profile[animation="1"] .familiars .people-grid .people-item img {
+    width: 200px;
+  }
 }
-@media screen and (width < 950px) {
+@media screen and (width > 950px) and (width < 950px) {
   body .profile[animation="1"] .familiars .people-grid .people-item img {
     width: 100px;
   }
@@ -130,6 +134,7 @@ body .profile .card .fullname {
   position: absolute;
   z-index: 1;
   padding: 10px;
+  width: max-content;
   font-size: 3vmin;
   text-align: center;
   left: 5px;
@@ -161,6 +166,7 @@ body .profile .card .city {
   position: absolute;
   z-index: 1;
   padding: 10px;
+  width: max-content;
   font-size: 3vmin;
   text-align: center;
   right: 5px;
@@ -175,6 +181,7 @@ body .profile .card .status {
   position: absolute;
   z-index: 1;
   padding: 10px;
+  width: max-content;
   font-size: 2.6vmin;
   text-align: center;
   bottom: -25px;
@@ -185,12 +192,22 @@ body .profile .card .status {
 body .profile .card .photo {
   display: flex;
   gap: 10px;
-  overflow: hidden;
   height: 100%;
   width: 100%;
   aspect-ratio: 1;
   position: relative;
   z-index: 0;
+  overflow: hidden;
+}
+@media screen and (width < 950px) {
+  body .profile .card .photo {
+    overflow: auto hidden;
+  }
+}
+@media screen and (width < 950px) and (orientation: landscape) {
+  body .profile .card .photo #photo-0 {
+    display: none;
+  }
 }
 body .profile .card .photo .photo-item {
   height: calc(100% - 4px);

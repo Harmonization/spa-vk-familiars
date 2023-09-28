@@ -1,0 +1,41 @@
+body
+    @keyframes gridAnim
+        0%
+            width: 600px
+            grid-template-columns: repeat(1, minmax(600px, auto))
+
+        100%
+            width: calc(95vw - 20px)
+            grid-template-columns: repeat(1, minmax($big-icon, auto))
+            
+    .profile[animation='1']
+        @media screen and (width > $media-width)
+            animation: gridAnim 2s 1 forwards
+            grid-template-rows: 1fr minmax(500px, calc(100vmin - $margin-body - $border-width))
+            min-width: 235px
+
+            .card
+                animation: openPhoto 2s 1 forwards
+
+                .photo
+                    overflow: auto hidden
+
+                    #photo-0
+                        display: none
+
+            @keyframes openPhoto
+                100%
+                    aspect-ratio: 2/1
+
+            .familiars
+                .people-grid
+                    grid-template-columns: repeat(auto-fit, minmax($big-icon, auto))
+
+                    @media screen and (width < $media-width)
+                        grid-template-columns: repeat(auto-fit, minmax($small-icon, auto)) 
+
+                    .people-item
+                        img
+                            width: $big-icon
+                            @media screen and (width < $media-width)
+                                width: $small-icon
